@@ -211,16 +211,7 @@ AdvancedJava01/
 └── ShopSphere/
 ```
 
----
-
-## 🚀 Getting Started
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/sanjayyadav61/AdvancedJava01.git
-cd AdvancedJava01
-```
+...
 
 ### Requirements
 
@@ -284,16 +275,9 @@ It is designed as a practical collection for learning **Advanced Java and Java W
 
 **Sanjay Yadav**
 
-GitHub: [@sanjayyadav61](https://github.com/sanjayyadav61)
+GitHub: https://github.com/SHANTANU-SRSHAN
 
-Repository: [AdvancedJava01](https://github.com/sanjayyadav61/AdvancedJava01)
+Repository: https://github.com/SHANTANU-SRSHAN/ADVANCED-JAVA-LAB
 
 ---
 
-## ⭐ Support
-
-If you find this repository useful, consider giving it a ⭐ on GitHub.
-
-<p align="center">
-  Made with ☕ and Java ❤️
-</p>
