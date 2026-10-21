@@ -15,7 +15,7 @@ Java, Swing, event handling.
 Open a terminal in this folder and run:
 
 ```bash
-javac sanjay.java
-java sanjay
+javac shantanu.java
+java shantanu
 ```
 
