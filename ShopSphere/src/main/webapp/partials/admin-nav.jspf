@@ -1,0 +1,36 @@
+<%-- Admin area navigation (include after the main header) --%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+
+<c:set var="aUri" value="${pageContext.request.requestURI}"/>
+
+<div class="admin-nav">
+    <a href="${pageContext.request.contextPath}/admin"
+       class="${fn:endsWith(aUri, '/admin') || fn:endsWith(aUri, 'dashboard.jsp') ? 'active' : ''}">
+        📊 Dashboard
+    </a>
+    <a href="${pageContext.request.contextPath}/admin/products"
+       class="${fn:endsWith(aUri, '/admin/products') ? 'active' : ''}">
+        📦 Products
+    </a>
+    <a href="${pageContext.request.contextPath}/admin/orders"
+       class="${fn:endsWith(aUri, '/admin/orders') ? 'active' : ''}">
+        🧾 Orders
+    </a>
+    <a href="${pageContext.request.contextPath}/admin/coupons"
+       class="${fn:endsWith(aUri, '/admin/coupons') ? 'active' : ''}">
+        🎟 Coupons
+    </a>
+    <a href="${pageContext.request.contextPath}/admin/refunds"
+       class="${fn:endsWith(aUri, '/admin/refunds') ? 'active' : ''}">
+        💸 Refunds
+    </a>
+    <a href="${pageContext.request.contextPath}/admin/users"
+       class="${fn:endsWith(aUri, '/admin/users') ? 'active' : ''}">
+        👥 Customers
+    </a>
+    <a href="${pageContext.request.contextPath}/products"
+       class="admin-view-store">
+        👁 View store
+    </a>
+</div>

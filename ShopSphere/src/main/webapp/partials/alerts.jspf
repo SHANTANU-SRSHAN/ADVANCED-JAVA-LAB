@@ -1,0 +1,78 @@
+<%-- Small alerts used across pages: ?added=1, ?error=stock, etc. --%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<c:if test="${param.added eq '1'}">
+    <div class="alert alert-success">✅ Added to your cart.
+        <a href="${pageContext.request.contextPath}/cart">View cart →</a>
+    </div>
+</c:if>
+
+<c:if test="${param.updated eq '1' || param.removed eq '1'}">
+    <div class="alert alert-success">Cart updated.</div>
+</c:if>
+
+<c:if test="${param.cleared eq '1'}">
+    <div class="alert alert-success">Your cart is now empty.</div>
+</c:if>
+
+<c:if test="${param.error eq 'stock'}">
+    <div class="alert alert-error">⚠ Some items in your cart are out of stock.
+        <a href="${pageContext.request.contextPath}/cart">Review cart →</a>
+    </div>
+</c:if>
+
+<c:if test="${param.error eq 'outofstock'}">
+    <div class="alert alert-error">⚠ Sorry, that product is out of stock.</div>
+</c:if>
+
+<c:if test="${param.error eq 'session'}">
+    <div class="alert alert-error">⚠ Your session expired. Please try again.</div>
+</c:if>
+
+<c:if test="${param.saved eq '1'}">
+    <div class="alert alert-success">💚 Saved to your wishlist.
+        <a href="${pageContext.request.contextPath}/wishlist">View wishlist →</a>
+    </div>
+</c:if>
+
+<c:if test="${param.removed eq '1' && param.saved ne '1'}">
+    <div class="alert alert-success">Removed from your wishlist.</div>
+</c:if>
+
+<c:if test="${param.moved eq '1'}">
+    <div class="alert alert-success">🛒 Moved to your cart.</div>
+</c:if>
+
+<c:if test="${param.cancelled eq '1'}">
+    <div class="alert alert-success">Your order has been cancelled and the
+        stock has been released.</div>
+</c:if>
+
+<c:if test="${param.cancelled eq '0'}">
+    <div class="alert alert-error">Only orders that are still waiting can be cancelled.</div>
+</c:if>
+
+<c:if test="${param.reviewed eq '1'}">
+    <div class="alert alert-success">⭐ Thanks for your review!</div>
+</c:if>
+
+<c:if test="${param.deleted eq '1'}">
+    <div class="alert alert-success">Deleted.</div>
+</c:if>
+
+<%-- Message produced by the checkout page (coupon, address book …) --%>
+<c:if test="${not empty sessionScope.couponMessage}">
+    <div class="alert alert-success">
+        <c:out value="${sessionScope.couponMessage}"/>
+    </div>
+    <c:remove var="couponMessage" scope="session"/>
+</c:if>
+
+<%-- The guest cart was merged into the account cart after signing in --%>
+<c:if test="${not empty sessionScope.cartMerged}">
+    <div class="alert alert-success">
+        ${sessionScope.cartMerged} item(s) from your guest cart were
+        moved into your account.
+    </div>
+    <c:remove var="cartMerged" scope="session"/>
+</c:if>

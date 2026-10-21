@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="ShopSphere">
+  <rect width="96" height="96" rx="24" fill="#12372a"/>
+  <path d="M27 40 h42 l-5 38 h-32 z" fill="#f7f2e6"/>
+  <path d="M37 40 v-7 a11 11 0 0 1 22 0 v7" fill="none" stroke="#f7f2e6" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="42" cy="56" r="3" fill="#22a06b"/>
+  <circle cx="54" cy="56" r="3" fill="#22a06b"/>
+  <path d="M42 64 q6 5 12 0" fill="none" stroke="#22a06b" stroke-width="3" stroke-linecap="round"/>
+</svg>

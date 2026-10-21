@@ -1,0 +1,30 @@
+# Build output
+target/
+*.war
+build.log
+
+# Local database configuration (contains credentials).
+# Copy shopsphere.properties.example to configure the app.
+shopsphere.properties
+
+# Local Tomcat installation and logs
+apache-tomcat-*/
+*.log
+
+# Verification screenshots
+*-shot.png
+
+# Machine-specific classpath dump
+classpath.txt
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db

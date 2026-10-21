@@ -1,0 +1,105 @@
+<%-- =====================================================================
+     ShopSphere — shared header (included by every page with
+     <%@ include file="partials/header.jspf" %>)
+     Shows the SAME navigation everywhere:
+       • guest   → Login / Get Started
+       • member  → name, Orders, Wishlist, Account, Logout
+       • admin   → extra Admin link
+       • cart badge count is kept in sync by AuthFilter
+     ===================================================================== --%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+
+<c:set var="uri" value="${pageContext.request.requestURI}"/>
+<c:set var="isHome"
+       value="${fn:endsWith(uri, '/home') || fn:endsWith(uri, '/index.jsp')}"/>
+<c:set var="isProducts"
+       value="${fn:endsWith(uri, '/products') || fn:endsWith(uri, '/product')}"/>
+<c:set var="isOrders" value="${fn:endsWith(uri, '/orders') || fn:endsWith(uri, '/order')}"/>
+<c:set var="isWishlist" value="${fn:endsWith(uri, '/wishlist')}"/>
+<c:set var="isCart" value="${fn:endsWith(uri, '/cart')}"/>
+<c:set var="isAccount" value="${fn:endsWith(uri, '/account') || fn:endsWith(uri, '/addresses')}"/>
+
+<%-- The CSRF token for this session. Forms post it as a hidden field;
+     JavaScript can read it from here or from the ss_csrf cookie. --%>
+<meta name="csrf-token" content="${sessionScope.csrfToken}">
+
+<header class="navbar">
+    <a class="logo" href="${pageContext.request.contextPath}/home">
+        <img class="logo-mark"
+             src="${pageContext.request.contextPath}/images/logo.svg"
+             alt="">
+        <span class="logo-word">Shop<span class="logo-accent">Sphere.</span></span>
+    </a>
+
+    <nav class="nav-links">
+        <a href="${pageContext.request.contextPath}/home"
+           <c:if test="${isHome}">class="active"</c:if>>Home</a>
+
+        <a href="${pageContext.request.contextPath}/products"
+           <c:if test="${isProducts}">class="active"</c:if>>Products</a>
+
+        <c:if test="${not empty sessionScope.user}">
+            <a href="${pageContext.request.contextPath}/wishlist"
+               <c:if test="${isWishlist}">class="active"</c:if>>Wishlist
+                <c:if test="${not empty sessionScope.wishlistCount && sessionScope.wishlistCount > 0}">
+                    <span class="nav-badge">${sessionScope.wishlistCount}</span>
+                </c:if>
+            </a>
+
+            <a href="${pageContext.request.contextPath}/orders"
+               <c:if test="${isOrders}">class="active"</c:if>>My Orders</a>
+
+            <a href="${pageContext.request.contextPath}/account"
+               <c:if test="${isAccount}">class="active"</c:if>>Account</a>
+
+            <c:if test="${sessionScope.userRole eq 'ADMIN'}">
+                <a href="${pageContext.request.contextPath}/admin">Admin</a>
+            </c:if>
+        </c:if>
+    </nav>
+
+    <div class="nav-actions">
+        <a href="${pageContext.request.contextPath}/cart"
+           class="cart-link <c:if test='${isCart}'>active</c:if>">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true">
+                <circle cx="9" cy="20" r="1.4"/>
+                <circle cx="18" cy="20" r="1.4"/>
+                <path d="M2 3h3l2.4 12.2a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.6L21 7H6"/>
+            </svg>
+            Cart
+            <c:if test="${not empty sessionScope.cartCount && sessionScope.cartCount > 0}">
+                <span class="nav-badge">${sessionScope.cartCount}</span>
+            </c:if>
+        </a>
+
+        <c:choose>
+            <c:when test="${not empty sessionScope.user}">
+                <a class="user-chip"
+                   href="${pageContext.request.contextPath}/account"
+                   title="<c:out value='${sessionScope.user.email}'/>">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>
+                    </svg>
+                     <c:out value="${sessionScope.userName}"/>
+                </a>
+                <a href="${pageContext.request.contextPath}/logout"
+                   class="logout-link">Logout</a>
+            </c:when>
+
+            <c:otherwise>
+                <a href="${pageContext.request.contextPath}/login"
+                   class="login-link">Login</a>
+                <a href="${pageContext.request.contextPath}/register"
+                   class="account-btn">Get Started</a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+</header>

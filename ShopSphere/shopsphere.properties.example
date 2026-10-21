@@ -1,0 +1,37 @@
+# ============================================================
+# ShopSphere - database configuration
+#
+# This file is bundled into the WAR so the application works out
+# of the box. Copy this example, change the values and put the
+# copy either:
+#
+#   - next to the application (the folder Tomcat is started from), or
+#   - in src/main/resources/ so it is bundled into the WAR.
+#
+# You can also skip the file completely and use system properties:
+#
+#   set CATALINA_OPTS=-Dshopsphere.db.url=... -Dshopsphere.db.user=... -Dshopsphere.db.password=...
+#
+# or environment variables:
+#
+#   SHOSPHERE_DB_URL, SHOSPHERE_DB_USER, SHOSPHERE_DB_PASSWORD
+#
+# Precedence: system property -> environment variable -> file
+# ============================================================
+
+# --- Database ---
+shopsphere.db.url=jdbc:mysql://localhost:3306/shopsphere?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+shopsphere.db.user=root
+shopsphere.db.password=CHANGE_ME
+
+# --- Shop settings ---
+shopsphere.tax.percent=5
+shopsphere.shipping.free.threshold=1999
+
+# --- Sessions ---
+shopsphere.remember.days=30
+shopsphere.token.hours=24
+
+# --- Security ---
+shopsphere.login.max.attempts=5
+shopsphere.login.lockout.minutes=15

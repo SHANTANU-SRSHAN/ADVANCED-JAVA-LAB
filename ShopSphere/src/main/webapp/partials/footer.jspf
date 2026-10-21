@@ -1,0 +1,12 @@
+<%-- ShopSphere — shared footer --%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<footer class="footer">
+    <a href="${pageContext.request.contextPath}/home" class="logo">
+        <img class="logo-mark"
+             src="${pageContext.request.contextPath}/images/logo.svg"
+             alt="">
+        <span class="logo-word">Shop<span class="logo-accent">Sphere.</span></span>
+    </a>
+    <p>Discover more. Shop smarter.</p>
+    <p>&copy; 2026 ShopSphere. Student project.</p>
+</footer>
